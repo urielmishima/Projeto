@@ -15,7 +15,7 @@ import model.Cliente;
 import service.AtendimentoService;
 import service.ClienteService;
 
-public class entrarCliente implements Command {
+public class NewCliente implements Command {
 
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response)
@@ -29,13 +29,12 @@ public class entrarCliente implements Command {
 		
 		Atendimento atendimento = new Atendimento(0, null, null, 0, StatusAtendimento.BOT, cliente, null, null);
 		AtendimentoService atendimentoService = new AtendimentoService();
-		atendimento = atendimentoService.newAtendimento(atendimento);
+		atendimento.setId(atendimentoService.newAtendimento(atendimento));
 		
-		Gson gson = new Gson();	
-		String json = gson.toJson(atendimento);
+		Gson gson = new Gson();
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("atendimento", json);
+		session.setAttribute("atendimento",  gson.toJson(atendimento));
 		response.sendRedirect("chatbot.jsp");
 	}
 

@@ -88,6 +88,5 @@ public class Atendimento implements Serializable{
 	}
 	public void setRespostas(List<Resposta> respostas) {
 		this.respostas = respostas;
-	}
-	
+	}	
 }
