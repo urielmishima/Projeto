@@ -1,13 +1,15 @@
 package service;
 
 import dao.AtendimentoDAO;
+import enums.StatusFuncionario;
 import model.Atendimento;
+import model.Funcionario;
 
 public class AtendimentoService {
 	AtendimentoDAO dao = new AtendimentoDAO();
 
-	public int newAtendimento(Atendimento atendimento) {
-		return dao.newAtendimento(atendimento);
+	public int newChatBot(Atendimento atendimento) {
+		return dao.newChatBot(atendimento);
 	}
 
 	public void newPergunta(Atendimento atendimento) {
@@ -34,7 +36,21 @@ public class AtendimentoService {
 			pontuacaoService.hate(atendimento.getRespostas().get(i).getPontuacao());			
 		}
 		atendimento.setInteracoes(3);
-		dao.endChatBot(atendimento);
-		***
+		Funcionario funcionario = null;
+		FuncionarioService funcionarioService = new FuncionarioService();
+		while(funcionario == null) {
+			funcionario = funcionarioService.findByStatus(StatusFuncionario.DISPONIVEL);
+		}
+		funcionarioService.statusIndisponivel(funcionario);
+		atendimento.setFuncionario(funcionario);
+		dao.newChat(atendimento);
+	}
+
+	public Atendimento newAtendimento(Funcionario funcionario) {
+		Atendimento atendimento = null;
+		while(atendimento == null) {
+			atendimento = dao.newAtendimento(funcionario);
+		}
+		return atendimento;
 	}
 }

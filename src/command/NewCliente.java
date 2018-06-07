@@ -29,7 +29,7 @@ public class NewCliente implements Command {
 		
 		Atendimento atendimento = new Atendimento(0, null, null, 0, StatusAtendimento.BOT, cliente, null, null);
 		AtendimentoService atendimentoService = new AtendimentoService();
-		atendimento.setId(atendimentoService.newAtendimento(atendimento));
+		atendimento.setId(atendimentoService.newChatBot(atendimento));
 		
 		Gson gson = new Gson();
 		

@@ -19,12 +19,12 @@ public class Atendimento implements Serializable{
 	private Funcionario funcionario;
 	private String duvida;
 	private List<Resposta> respostas = new ArrayList<Resposta>();
+	private List<Mensagem> mensagens = new ArrayList<Mensagem>();
 	
 	public Atendimento() {
-	}	
+	}		
 	public Atendimento(int id, Date dtInicio, Date dtFim, int interacoes, StatusAtendimento status, Cliente cliente,
 			Funcionario funcionario, String duvida) {
-		super();
 		this.id = id;
 		this.dtInicio = dtInicio;
 		this.dtFim = dtFim;
@@ -34,7 +34,7 @@ public class Atendimento implements Serializable{
 		this.funcionario = funcionario;
 		this.duvida = duvida;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -88,5 +88,12 @@ public class Atendimento implements Serializable{
 	}
 	public void setRespostas(List<Resposta> respostas) {
 		this.respostas = respostas;
+	}
+	public List<Mensagem> getMensagens() {
+		return mensagens;
+	}
+	public void setMensagens(List<Mensagem> mensagens) {
+		this.mensagens = mensagens;
 	}	
+	
 }
