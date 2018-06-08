@@ -1,23 +1,22 @@
 package model;
 
 import enums.RemetenteMensagem;
-import enums.StatusMensagem;
 
 public class Mensagem {
 	
 	private int id;
 	private String mensagem;
 	private int remetente;
-	private int status;
+	private Atendimento atendimento;
 	
 	public Mensagem() {
-	}
+	}	
 	
-	public Mensagem(int id, String mensagem, RemetenteMensagem remetente, StatusMensagem status) {
+	public Mensagem(int id, String mensagem, RemetenteMensagem remetente, Atendimento atendimento) {
 		this.id = id;
 		this.mensagem = mensagem;
 		this.remetente = remetente.getCod();
-		this.status = status.getCod();
+		this.atendimento = atendimento;
 	}
 	
 	public int getId() {
@@ -43,15 +42,14 @@ public class Mensagem {
 	public void setRemetente(RemetenteMensagem remetente) {
 		this.remetente = remetente.getCod();
 	}
-
-	public StatusMensagem getStatus() {
-		return StatusMensagem.toEnum(status);
-	}
-
-	public void setStatus(StatusMensagem status) {
-		this.status = status.getCod();
-	}
 	
+	public Atendimento getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
+	}
 	
 	
 }

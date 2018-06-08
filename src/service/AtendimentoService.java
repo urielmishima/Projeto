@@ -41,7 +41,8 @@ public class AtendimentoService {
 		while(funcionario == null) {
 			funcionario = funcionarioService.findByStatus(StatusFuncionario.DISPONIVEL);
 		}
-		funcionarioService.statusIndisponivel(funcionario);
+		funcionario.setStatus(StatusFuncionario.INDISPONIVEL);
+		funcionarioService.alterStatus(funcionario);
 		atendimento.setFuncionario(funcionario);
 		dao.newChat(atendimento);
 	}
@@ -52,5 +53,10 @@ public class AtendimentoService {
 			atendimento = dao.newAtendimento(funcionario);
 		}
 		return atendimento;
+	}
+
+	public void endChat(Atendimento atendimento) {
+		dao.endChat(atendimento);
+		
 	}
 }

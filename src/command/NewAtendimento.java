@@ -13,6 +13,7 @@ import enums.StatusFuncionario;
 import model.Atendimento;
 import model.Funcionario;
 import service.AtendimentoService;
+import service.FuncionarioService;
 
 public class NewAtendimento implements Command {
 
@@ -23,6 +24,9 @@ public class NewAtendimento implements Command {
 		Gson gson = new Gson();
 		
 		Funcionario funcionario = gson.fromJson((String) session.getAttribute("funcionario"), Funcionario.class);
+		funcionario.setStatus(StatusFuncionario.DISPONIVEL);
+		FuncionarioService funcionarioService = new FuncionarioService();
+		funcionarioService.alterStatus(funcionario);
 		Atendimento atendimento = new Atendimento();
 		AtendimentoService atendimentoService = new AtendimentoService();
 		atendimento = atendimentoService.newAtendimento(funcionario);

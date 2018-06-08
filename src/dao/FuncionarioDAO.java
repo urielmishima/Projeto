@@ -60,15 +60,15 @@ public class FuncionarioDAO {
 		return retorno;
 	}
 
-	public void statusIndisponivel(Funcionario funcionario) {
+	public void alterStatus(Funcionario funcionario) {
 		String sqlUpdate = "UPDATE funcionario SET status=? WHERE id=?";
 	      try (Connection conn = ConnectionFactory.obtemConexao();
 	      			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
-	         stm.setInt(1, StatusFuncionario.INDISPONIVEL.getCod());
+	         stm.setInt(1, funcionario.getStatus().getCod());
 	         stm.setInt(2, funcionario.getId());
 	         stm.execute();
 	      } catch (Exception e) {
 	         e.printStackTrace();
-	      }		
+	      }	
 	}
 }

@@ -118,7 +118,6 @@ CREATE TABLE IF NOT EXISTS `ChatBot`.`Mensagem` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `mensagem` VARCHAR(144) NOT NULL,
   `remetente` INT NOT NULL,
-  `status` INT NOT NULL,
   `Atendimento_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Mensagem_Atendimento1_idx` (`Atendimento_id` ASC),

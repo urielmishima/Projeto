@@ -101,4 +101,17 @@ public class AtendimentoDAO {
 		}
 		return atendimento;
 	}
+
+	public void endChat(Atendimento atendimento) {
+		String sqlUpdate = "UPDATE atendimento SET status=? WHERE id=?";
+	      try (Connection conn = ConnectionFactory.obtemConexao();
+	      			PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
+	         stm.setInt(1, atendimento.getStatus().getCod());
+	         stm.setInt(2, atendimento.getId());
+	         stm.execute();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }	
+		
+	}
 }

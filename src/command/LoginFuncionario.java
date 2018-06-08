@@ -34,6 +34,7 @@ public class LoginFuncionario implements Command {
 		else
 			session.setAttribute("funcionario",  null);
 
+		response.sendRedirect("login.jsp");
 	}
 
 }

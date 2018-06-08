@@ -15,8 +15,8 @@ public class FuncionarioService {
 		return dao.logar(funcionario);
 	}
 
-	public void statusIndisponivel(Funcionario funcionario) {
-		dao.statusIndisponivel(funcionario);		
+	public void alterStatus(Funcionario funcionario) {
+		dao.alterStatus(funcionario);		
 	}
 	
 	
