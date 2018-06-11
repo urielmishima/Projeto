@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="UrielMishima">
+<link rel="icon"
+	href="https://www.cartorio24horas.com.br/solicitar-certidao//images/responsivo/cartorios/cartorio-de-notas.png">
+
+<title>Funcionario</title>
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/atendimento.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav
+		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">SiplanControl-M</a>
+		<ul class="navbar-nav px-3">
+			<li class="nav-item text-nowrap"><button type="submit"
+					id="signOut" class="btn btn-enviar btn-warning rounded">LogOut</button></li>
+		</ul>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link active"
+							href="funcionario.html"> <span data-feather="home"></span>
+								Atendendimento<span class="sr-only">(current)</span>
+						</a></li>
+					</ul>
+
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+						<span>Relatórios</span>
+					</h6>
+					<ul class="nav flex-column mb-2">
+						<li class="nav-item"><a class="nav-link" href="diario.html">
+								<span data-feather="file-text"></span> Diário
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="semanal.html">
+								<span data-feather="file-text"></span> Semanal
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="mensal.html">
+								<span data-feather="file-text"></span> Mensal
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div
+				class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+				<h1 class="h2">Atendimento</h1>
+				<button type="submit" id="btnNovoAtendimento"
+					class="btn btn-enviar btn-warning col-2 rounded">Novo
+					Atendimento</button>
+			</div>
+
+			<div>
+				<div class="boxMessage m-auto">
+				
+				</div>
+				<div id="typeMessage">
+					<div class="row">
+						<div class="col-md-11 col-xs-11">
+							<input type="text" id="inputMessage"
+								placeholder="Digite aqui sua mensagem" name="mensagemUser">
+						</div>
+						<div class="col-md-1 col-xs-1">
+							<button type="submit" class="btn btn-enviar btn-warning enviarMsg" name="command"
+								value="Perguntar">
+								<span data-feather="send"></span>
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			</main>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="bootstrap/jquery-slim.min.js"><\/script>')
+	</script>
+	<script src="bootstrap/popper.min.js"></script>
+	<script src="bootstrap/bootstrap.min.js"></script>
+
+	<!-- Icons -->
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	<script>
+		feather.replace()
+	</script>
+	<script src="js/funcionario.js"></script>
+</body>
+</html>

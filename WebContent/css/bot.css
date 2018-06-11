@@ -1,0 +1,160 @@
+@charset "UTF-8";
+body {
+    background-color: #B5B5B5;
+}
+.row {
+	margin-left: 0px;
+}
+
+.col-md-2, .col-md-10 {
+	padding: 0;
+}
+
+.panel {
+	margin-bottom: 0px;
+}
+
+.chat-window {
+	bottom: 0;
+	position: fixed;
+	float: right;
+	margin-left: 10px;
+}
+
+.chat-window>div>.panel {
+	border-radius: 5px 5px 0 0;
+}
+
+.icon_minim {
+	padding: 2px 10px;
+}
+
+.msg_container_base {
+	background: #e5e5e5;
+	margin: 0;
+	padding: 0 10px 10px;
+	max-height: 300px;
+	overflow-x: hidden;
+}
+
+.avatar {
+	position: relative;
+	size: 20px;
+}
+
+.top-bar {
+	background: #666;
+	color: white;
+	padding: 10px;
+	position: relative;
+	overflow: hidden;
+}
+
+.msg_receive {
+	padding-left: 0;
+	margin-left: 0;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+}
+
+.msg_sent {
+	padding-bottom: 20px !important;
+	margin: auto;
+	text-align:right;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.messages {
+	background: white;
+	padding: 10px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	max-width: 95%;
+}
+
+.messages>p {
+	font-size: 13px;
+	margin: 0 0 0.2rem 0;
+}
+
+.messages>time {
+	font-size: 11px;
+	color: #ccc;
+}
+
+.msg_container {
+	padding-top: 10px;
+	overflow: hidden;
+	display: flex;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+.btn-group.dropup {
+	position: fixed;
+	left: 0px;
+	bottom: 0;
+}
+.circulado {
+	border: 2px solid black;
+	border-radius: 100%;
+	padding: 5px;
+}
+
+.geral {
+	width: 100%;
+    height: 100%;
+}
+
+.boxMessage {
+    background-color: #F5F5F5;
+    width: 99%;
+   	height: 100hv !important;
+    border-radius: 5px;
+    border: 14px solid #c4c4c4;
+    border-color: #504485;
+    box-shadow: 1px 1px 1px 1px #504485;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: auto;
+    overflow-y: auto;
+    
+}
+
+#typeMessage {
+    width: 99%;
+    height: 10%;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    border: 10px solid #c4c4c4;
+    border-color: #504485;
+    box-shadow: 1px 1px 1px 1px #504485;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+/*    margin-bottom: auto*/
+}
+
+#inputMessage {
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #F5F5F5;
+}
+.btn-enviar{
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+.pai{
+	display:block; 
+	overflow:hidden;
+	width: 100%;
+	height: 100%;
+}

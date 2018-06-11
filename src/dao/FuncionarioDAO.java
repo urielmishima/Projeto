@@ -23,9 +23,7 @@ public class FuncionarioDAO {
 					funcionario.setId(rs.getInt("id"));
 					funcionario.setTipo(TipoFuncionario.toEnum(rs.getInt("tipo")));
 				} else {
-					funcionario.setId(-1);
-					funcionario.setSenha(null);
-					funcionario.setTipo(null);
+					funcionario = null;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

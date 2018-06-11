@@ -11,6 +11,10 @@ public class MensagemService {
 	}
 
 	public Mensagem searchMensagem(Mensagem mensagem) {
-		return dao.searchMensagem(mensagem);
+		Mensagem aux = new Mensagem();
+		do {
+		aux = dao.searchMensagem(mensagem);
+		} while(aux == null);
+		return aux;
 	}
 }

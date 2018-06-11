@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -19,21 +18,26 @@ public class SearchMensagemFuncionario implements Command {
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		String pIdCliente = request.getParameter("idCliente");
+		String pLastIdMensagem = request.getParameter("lastIdMensagem");
+		
+		int idCliente = Integer.parseInt(pIdCliente);
+		int lastIdMensagem = Integer.parseInt(pLastIdMensagem);
+
 		Gson gson = new Gson();	
 		
-		Mensagem mensagem = gson.fromJson((String) session.getAttribute("mensagem"), Mensagem.class);
+		Mensagem mensagem = new Mensagem();
+		mensagem.setId(lastIdMensagem);
 		MensagemService mensagemService = new MensagemService();
 		
-		if(mensagem == null) {
-			Atendimento atendimento = gson.fromJson((String) session.getAttribute("atendimento"), Atendimento.class);
-			mensagem = new Mensagem(0, null, RemetenteMensagem.FUNCIONARIO, atendimento);
-		}
+		Atendimento atendimento = new Atendimento();
+		atendimento.setId(idCliente);
+		mensagem.setAtendimento(atendimento);
+		mensagem.setRemetente(RemetenteMensagem.FUNCIONARIO);
 		
-		mensagem = mensagemService.searchMensagem(mensagem);
-		session.setAttribute("mensagemRecebida",  gson.toJson(mensagem));
+		mensagem = mensagemService.searchMensagem(mensagem);	
 		
-
+		response.getWriter().print(gson.toJson(mensagem));
 	}
 
 }

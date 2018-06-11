@@ -9,4 +9,8 @@ public class ClienteService {
 	public Cliente entrar(Cliente cliente) {
 		return dao.findById(dao.insert(cliente));
 	}
+	
+	public Cliente findById(int id) {
+		return dao.findById(id);
+	}
 }

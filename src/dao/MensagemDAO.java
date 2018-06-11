@@ -24,6 +24,7 @@ public class MensagemDAO {
 	}
 
 	public Mensagem searchMensagem(Mensagem mensagem) {
+		Mensagem aux = new Mensagem();
 		String sqlSelect = "SELECT id, mensagem, remetente FROM mensagem WHERE Mensagem.idAtendimento = ? and Mensagem.remetente = ? and Mensagem.id > ?";
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -32,9 +33,9 @@ public class MensagemDAO {
 			stm.setInt(3, mensagem.getId());
 			try (ResultSet rs = stm.executeQuery();) {
 				if (rs.next()) {
-					mensagem.setId(rs.getInt("id"));
-					mensagem.setMensagem(rs.getString("mensagem"));
-					mensagem.setRemetente(RemetenteMensagem.toEnum(rs.getInt("remetente")));
+					aux.setId(rs.getInt("id"));
+					aux.setMensagem(rs.getString("mensagem"));
+					aux.setRemetente(RemetenteMensagem.toEnum(rs.getInt("remetente")));
 				} else {
 					return null;
 				}
@@ -44,7 +45,7 @@ public class MensagemDAO {
 		} catch (SQLException e1) {
 			System.out.print(e1.getStackTrace());
 		}
-		return mensagem;
+		return aux;
 		
 	}
 

@@ -20,11 +20,14 @@ public class NewMensagemFuncionario implements Command {
 	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String mensagemEnviada = request.getParameter("mensagemEnviada");
+		String idCliente = request.getParameter("idCliente");
 		
-		HttpSession session = request.getSession();
+		int id = Integer.parseInt(idCliente);
+		
 		Gson gson = new Gson();	
 		
-		Atendimento atendimento = gson.fromJson((String) session.getAttribute("atendimento"), Atendimento.class);
+		Atendimento atendimento = new Atendimento();
+		atendimento.setId(id);
 		
 		Mensagem mensagem = new Mensagem(0, mensagemEnviada, RemetenteMensagem.FUNCIONARIO, atendimento);
 		MensagemService mensagemService = new MensagemService();

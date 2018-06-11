@@ -6,31 +6,32 @@ import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-
-import enums.StatusAtendimento;
-import model.Atendimento;
+import model.Pontuacao;
 import service.AtendimentoService;
+import service.PontuacaoService;
 
 public class EndChatBot implements Command {
 
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Gson gson = new Gson();	
+		String pIdCliente = request.getParameter("idCliente");
+		String pIdPalavraChave = request.getParameter("idPalavraChave");
+		String pIdResposta = request.getParameter("idResposta");
+		String pContador = request.getParameter("contador");
 		
-		Atendimento atendimento = gson.fromJson((String) session.getAttribute("atendimento"), Atendimento.class);
-		atendimento.setDtFim(new Date(System.currentTimeMillis()));
-		atendimento.setStatus(StatusAtendimento.RESOLVIDO_BOT);
+		int idCliente = Integer.parseInt(pIdCliente);
+		int IdResposta = Integer.parseInt(pIdResposta);
+		int IdPalavraChave = Integer.parseInt(pIdPalavraChave);
+		int contador = Integer.parseInt(pContador);
+		
+		Pontuacao pontuacao = new Pontuacao(IdPalavraChave, IdResposta, 0);
+		PontuacaoService pontuacaoService = new PontuacaoService();
+		pontuacaoService.endChatBot(pontuacao);
+		
 		AtendimentoService atendimentoService = new AtendimentoService();
-		atendimentoService.endChatBot(atendimento);
-		
-		session.invalidate();
-		response.sendRedirect("obrigado.jsp");
-
+		atendimentoService.endChatBot(idCliente, new Date(System.currentTimeMillis()), contador);
 	}
 
 }

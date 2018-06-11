@@ -15,7 +15,7 @@ public class ConnectionFactory {
    }
    public static Connection obtemConexao() throws SQLException {
       return DriverManager
-         	.getConnection("jdbc:mysql://localhost/pratprogaula02?user=root&password=uh220799");
+         	.getConnection("jdbc:mysql://localhost/chatbot?user=root&password=uh220799");
    }
 
 }

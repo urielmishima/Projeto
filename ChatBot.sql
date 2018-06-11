@@ -93,18 +93,18 @@ CREATE TABLE IF NOT EXISTS `ChatBot`.`Atendimento` (
   `interacoes` INT NOT NULL,
   `status` INT NOT NULL,
   `duvida` VARCHAR(144) NULL,
-  `Funcionario_id` INT NOT NULL,
-  `Cliente_id` INT NOT NULL,
+  `idFuncionario` INT NULL,
+  `idCliente` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Atendimento_Funcionario1_idx` (`Funcionario_id` ASC),
-  INDEX `fk_Atendimento_Cliente1_idx` (`Cliente_id` ASC),
+  INDEX `fk_Atendimento_Funcionario1_idx` (`idFuncionario` ASC),
+  INDEX `fk_Atendimento_Cliente1_idx` (`idCliente` ASC),
   CONSTRAINT `fk_Atendimento_Funcionario1`
-    FOREIGN KEY (`Funcionario_id`)
+    FOREIGN KEY (`idFuncionario`)
     REFERENCES `ChatBot`.`Funcionario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Atendimento_Cliente1`
-    FOREIGN KEY (`Cliente_id`)
+    FOREIGN KEY (`idCliente`)
     REFERENCES `ChatBot`.`Cliente` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -118,11 +118,11 @@ CREATE TABLE IF NOT EXISTS `ChatBot`.`Mensagem` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `mensagem` VARCHAR(144) NOT NULL,
   `remetente` INT NOT NULL,
-  `Atendimento_id` INT NOT NULL,
+  `idAtendimento` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Mensagem_Atendimento1_idx` (`Atendimento_id` ASC),
+  INDEX `fk_Mensagem_Atendimento1_idx` (`idAtendimento` ASC),
   CONSTRAINT `fk_Mensagem_Atendimento1`
-    FOREIGN KEY (`Atendimento_id`)
+    FOREIGN KEY (`idAtendimento`)
     REFERENCES `ChatBot`.`Atendimento` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -31,11 +30,9 @@ public class NewCliente implements Command {
 		AtendimentoService atendimentoService = new AtendimentoService();
 		atendimento.setId(atendimentoService.newChatBot(atendimento));
 		
-		Gson gson = new Gson();
+		Gson gson = new Gson();		
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("atendimento",  gson.toJson(atendimento));
-		response.sendRedirect("chatbot.jsp");
+		response.getWriter().print(gson.toJson(cliente));
 	}
 
 }

@@ -5,10 +5,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import enums.StatusFuncionario;
+import enums.TipoFuncionario;
 import model.Funcionario;
 import service.FuncionarioService;
 
@@ -22,19 +23,14 @@ public class LoginFuncionario implements Command {
 		
 		int id = Integer.parseInt(pId);
 		
-		HttpSession session = request.getSession();
 		Gson gson = new Gson();	
 		
-		Funcionario funcionario = new Funcionario(id, senha, null, null);
+		Funcionario funcionario = new Funcionario(id, senha, TipoFuncionario.ATENDENTE, StatusFuncionario.INDISPONIVEL);
 		FuncionarioService funcionarioService = new FuncionarioService();
 		funcionario = funcionarioService.logar(funcionario);
 		if(funcionario != null) {
-			session.setAttribute("funcionario",  gson.toJson(funcionario));	
+			response.getWriter().print(gson.toJson(funcionario));
 		}
-		else
-			session.setAttribute("funcionario",  null);
-
-		response.sendRedirect("login.jsp");
 	}
 
 }

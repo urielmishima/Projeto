@@ -12,8 +12,14 @@ public class PontuacaoService {
 	}
 	
 	public void hate(Pontuacao pontuacao) {
+		pontuacao = dao.select(pontuacao);
 		pontuacao.setPontuacao(pontuacao.getPontuacao()-1);
 		dao.update(pontuacao);
+	}
+
+	public void endChatBot(Pontuacao pontuacao) {
+		pontuacao = dao.select(pontuacao);
+		like(pontuacao);	
 	}
 
 

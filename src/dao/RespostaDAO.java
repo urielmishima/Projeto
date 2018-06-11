@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Pontuacao;
 import model.Resposta;
 
 public class RespostaDAO {
@@ -23,9 +24,11 @@ public class RespostaDAO {
 					Resposta resposta = new Resposta();
 					resposta.setId(rs.getInt("Resposta.id"));
 					resposta.setResposta(rs.getString("Resposta.resposta"));
-					resposta.getPontuacao().setIdPalavraChave(rs.getInt("Pontuacao.idPalavraChave"));
-					resposta.getPontuacao().setIdResposta(rs.getInt("Pontuacao.idResposta"));
-					resposta.getPontuacao().setPontuacao(rs.getInt("Pontuacao.pontuacao"));
+					Pontuacao pontuacao = new Pontuacao();
+					pontuacao.setIdPalavraChave(rs.getInt("Pontuacao.idPalavraChave"));
+					pontuacao.setIdResposta(rs.getInt("Pontuacao.idResposta"));
+					pontuacao.setPontuacao(rs.getInt("Pontuacao.pontuacao"));
+					resposta.setPontuacao(pontuacao);
 					respostas.add(resposta);
 				}
 			} catch (SQLException e) {
